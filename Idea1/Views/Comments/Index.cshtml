@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Idea1.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    @*<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_like)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment_dislike)
+        </th>
+        <th></th>
+    </tr>*@
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment_text) at @Html.DisplayFor(modelItem => item.Comment_date)<br />
+            @Html.DisplayFor(modelItem => item.Comment_like) like <br />
+            @Html.DisplayFor(modelItem => item.Comment_dislike) dislike <br />
+            @Html.ActionLink("Like", "Like", new { id = item.Comment_id })
+            @Html.ActionLink("Dislike", "Dislike", new { id = item.Comment_id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Comment_id })
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Comment_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Comment_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Comment_id })
+        </td>*@
+    </tr>
+}
+
+</table>
